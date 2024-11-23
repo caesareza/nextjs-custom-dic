@@ -1,14 +1,9 @@
-interface Service {
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    execute: (args: any) => any;
-}
+export const MessageService = {
+    getMessage: () => ({
+            execute: () => "default message",
+    }),
 
-// export const getMessage: Service = {
-//     execute: () => "default message",
-// };
-
-export const getDetailMessage: Service = {
-    execute: (id: number) => {
-        return 'this is ' + id
-    }
+    getDetailMessage: () => ({
+        execute: (id: number) => `Message for ID: ${id}`,
+    }),
 }
