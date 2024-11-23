@@ -1,23 +1,42 @@
-class DIContainer {
-    private services: Map<string, unknown> = new Map()
+type ServiceMap = {
+    getMessage: { execute: () => string };
+    getDetailMessage: { execute: (id: number) => string };
+};
 
-    register(name: string, service: unknown){
-        this.services.set(name, service)
+/*
+    DIContainer<Services extends Record<string, any>>
+    we use any because we need to receive any type of the input such as array, object, string, etc.
+*/
+/* eslint-disable @typescript-eslint/no-explicit-any */
+class DIContainer<Services extends Record<string, any>> {
+    private dependencies: Map<keyof Services, Services[keyof Services]>;
+
+    constructor() {
+        this.dependencies = new Map();
     }
 
-    resolve(name: string){
-        const service = this.services.get(name)
-        if (!service) {
-            throw new Error(`Service "${name}" not found in DI container`)
-        }
+    register<K extends keyof Services>(name: K, dependency: Services[K]) {
+        this.dependencies.set(name, dependency);
+    }
 
-        return service
+    resolve<K extends keyof Services>(name: K): Services[K] {
+        const dependency = this.dependencies.get(name);
+        if (!dependency) {
+            throw new Error(`Dependency ${String(name)} not found`);
+        }
+        return dependency;
     }
 }
 
-const di = new DIContainer()
-import {MessageServiceFactory} from "@/services/MessageService";
+const di = new DIContainer<ServiceMap>();
 
-di.register('getMessage', MessageServiceFactory.getMessage)
+di.register("getMessage", {
+    execute: () => "default message",
+});
+di.register("getDetailMessage", {
+    execute: (id: number) => {
+        return `hai ` + id
+    }
+})
 
 export default di
