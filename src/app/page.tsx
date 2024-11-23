@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Dependency Injection Container</h1>
+      <h1>Dependency Injection Container Test</h1>
     </div>
   );
 }
