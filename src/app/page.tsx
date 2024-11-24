@@ -12,8 +12,8 @@ export default function Home() {
     console.log('env', env);
 
     return (
-        <div>
+        <main>
             <h1>Dependency Injection Container</h1>
-        </div>
+        </main>
     );
 }

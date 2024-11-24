@@ -8,6 +8,5 @@
     "arrowParens": "always",
     "printWidth": 80,
     "singleAttributePerLine": true,
-    "endOfLine": "lf",
-    "plugins": ["prettier-plugin-tailwindcss"]
+    "endOfLine": "lf"
 }
