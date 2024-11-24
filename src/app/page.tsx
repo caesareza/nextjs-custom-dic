@@ -1,17 +1,19 @@
-'use client'
+'use client';
 
-import di from "@/di/main";
+import di from '@/di/main';
 
 export default function Home() {
-    const data = di.resolve('getMessage').execute()
-    const hai = di.resolve('getDetailMessage').execute(12)
+    const data = di.resolve('getMessage').execute();
+    const hai = di.resolve('getDetailMessage').execute(12);
+    const env = di.resolve('envAdapter').APP_BASE_URL;
 
-    console.log('data', data)
-    console.log('hai', hai)
+    console.log('data', data);
+    console.log('hai', hai);
+    console.log('env', env);
 
-  return (
-    <div>
-      <h1>Dependency Injection Container Test</h1>
-    </div>
-  );
+    return (
+        <div>
+            <h1>Dependency Injection Container</h1>
+        </div>
+    );
 }

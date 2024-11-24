@@ -1,9 +1,9 @@
 export const MessageService = {
     getMessage: () => ({
-            execute: () => "default message",
+        execute: () => 'default message',
     }),
 
     getDetailMessage: () => ({
         execute: (id: number) => `Message for ID: ${id}`,
     }),
-}
+};
