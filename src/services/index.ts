@@ -1,5 +1,5 @@
-import { MessageService } from '@/services/MessageService';
+import { MessageService } from '@/services/MessageService'
 
 export const Services = {
     ...MessageService,
-};
+}

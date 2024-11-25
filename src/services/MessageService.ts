@@ -6,4 +6,4 @@ export const MessageService = {
     getDetailMessage: () => ({
         execute: (id: number) => `Message for ID: ${id}`,
     }),
-};
+}
